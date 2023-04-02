@@ -1,0 +1,44 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Make Your Words</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="head">
+      <h1>Be Free to Create your Vocabulary!</h1>
+    </div>
+    <div class="transtable">
+      <table class="table" id="ENJP" border="1">
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">NOTE</th>
+          </tr>
+          <!-- Data is fetched by MongoDB -->
+      </table>
+    </div>
+
+    <div class="opt_1">
+      <input type="button" value="Show Data"/>
+      <input type="button" value="Add a Row" onclick="AddRow()"/>
+      <input id="download" type="button" class="btn" value="Make a CSV File!" onclick="MakeCSV()"/>
+    </div>
+    
+    <div class="opt_2">
+      <h4>Name Your File!</h4>
+      <input id="FileName" type="text" placeholder="Input a File Name"/>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src=script.js></script>
+</body>
+
+</html>
