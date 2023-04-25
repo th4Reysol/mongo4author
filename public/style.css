@@ -1,6 +1,7 @@
-body{
+*{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 div.head{
     text-align: center;
@@ -10,6 +11,7 @@ div.head{
 }
 div>table{
     margin: auto;
+    margin-top: 20px;
 }
 
 tr>th[scope="col"]{

@@ -7,12 +7,15 @@ const AddRow = () => {
     let cel_EN = newRow.insertCell(-1);
     let cel_JP = newRow.insertCell(-1);
     let cel_NOTE = newRow.insertCell(-1);
-    let rowContentEN = '<input type="text" name="Title"/>';
-    let rowContentJP = '<input type="text" name="Author"/>';
-    let rowContentNOTE = '<input type="text" name="NOTE"/>';
+    let cel_DeleteButton = newRow.insertCell(-1);
+    let rowContentEN = '<input type="text" name="English"/>';
+    let rowContentJP = '<input type="text" name="Japanese"/>';
+    let rowContentNOTE = '<input type="text" name="Note"/>';
+    let rowDeleteButton = '<input type="button" value="Delete This"/>';
     cel_EN.innerHTML = rowContentEN;
     cel_JP.innerHTML = rowContentJP;
     cel_NOTE.innerHTML = rowContentNOTE;
+    cel_DeleteButton.innerHTML = rowDeleteButton;
 }
 
 const MakeCSV = () => {
@@ -57,7 +60,8 @@ const MakeCSV = () => {
     let downloadLink = document.createElement('a');
     downloadLink.download = document.getElementById("FileName").value + '.csv';
     downloadLink.href = URL.createObjectURL(blob);
-    downloadLink.dataset.downloadurl = ['text/plain', downloadLink.download, downloadLink.href].join(':');
+    downloadLink.dataset.downloadurl = 
+    ['text/plain', downloadLink.download, downloadLink.href].join(':');
     downloadLink.click();
     console.log(data);
 return window.alert("You get it")
@@ -67,25 +71,29 @@ const mongoGet = async () =>{
     try {
         console.log("show");
         // /bookにリクエスト投げる。axios.get()でapp.js内で取得したmongoDBデータ取得
-        let allbks = await axios.get("/book");
-       // 確認用コード：console.log(allbks);
-        let { data } = allbks;
+         let allbks = await axios.get("/word");
+         console.log(allbks);
+         let { data } = allbks;
         //出力
-        allbks = data.map((book) => {
-            const { id,title,author,other } = book;
-            console.log(id,title,author,other);
+         allbks = data.map((wordDetail) => {
+            let english = wordDetail['english'];
+            let japanese = wordDetail['japanese'];
+            let note = wordDetail['note']
             let newRow = table.insertRow(-1);
             let cel_EN = newRow.insertCell(-1);
             let cel_JP = newRow.insertCell(-1);
             let cel_NOTE = newRow.insertCell(-1);
-            let rowContentEN = `${title}`;
-            let rowContentJP = `${author}`;
-            let rowContentNOTE = `<input type="text" name="NOTE"/>`;
-            console.log(title)
+            let cel_Dlt = newRow.insertCell(-1);
+            let rowContentEN = `${english}`;
+            let rowContentJP = `${japanese}`;
+            let rowContentNOTE = `${note}`;
+            let rowContentDelete = '<input type="button" value="X"/>'
+            console.log(english)
             cel_EN.innerHTML = rowContentEN;
             cel_JP.innerHTML = rowContentJP;
             cel_NOTE.innerHTML = rowContentNOTE;
-            return console.log("did it!");
+            cel_Dlt.innerHTML = rowContentDelete;
+            return console.log(english);
           });
       } catch (err) {
         console.log(err);
