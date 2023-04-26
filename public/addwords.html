@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Your Words!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Add Your New Words!</h1>
+    <div class="transtable">
+        <table class="table" id="ENJP" border="1">
+            <tr>
+              <th scope="col">English</th>
+              <th scope="col">Japanese</th>
+            </tr>
+            <tr>
+                <td><input type="text" name="English"/>
+                </td>
+                <td><input type="text" name="Japanese"/>
+                </td>
+                <td><input type="button" value="X" onclick="DeleteRow"/>
+                </td>
+            </tr>
+        </table>
+      </div>
+      <div class="opt_1">
+        <input type="button" value="Add a Row" onclick="AddRow()"/>
+        <input type="button" value="Save Them" onclick=""/>
+      </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

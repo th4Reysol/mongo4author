@@ -16,13 +16,16 @@ mongoose.connect("mongodb+srv://thhisstory:FunairiFFF324@cluster0.ourgdrv.mongod
 ).then(()=>console.log("Connecting"))
 app.get('/', (req,res) => res.send('Hello World!'));
 
-// DBに登録用関数
+// DBに登録用関数 ここにAdd画面からのリストを受け取る。
 function registerData(){
     let bkData = new words({
         english: "Mary Barton",
         japanese: "Elizabeth Gaskell"
     })
     bkData.save()
+}
+function add_NewWords(){
+  console.log("DID IT!")
 }
 
 // ローカルホストに/book追加で入力すると作動する。

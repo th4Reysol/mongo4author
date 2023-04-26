@@ -6,16 +6,19 @@ const AddRow = () => {
     //追加行の内容を決定（セルを１つずつ作る）
     let cel_EN = newRow.insertCell(-1);
     let cel_JP = newRow.insertCell(-1);
-    let cel_NOTE = newRow.insertCell(-1);
     let cel_DeleteButton = newRow.insertCell(-1);
     let rowContentEN = '<input type="text" name="English"/>';
     let rowContentJP = '<input type="text" name="Japanese"/>';
-    let rowContentNOTE = '<input type="text" name="Note"/>';
-    let rowDeleteButton = '<input type="button" value="Delete This"/>';
+    let rowDeleteButton = '<input type="button" value="X" onclick="DeleteRow()"/>';
     cel_EN.innerHTML = rowContentEN;
     cel_JP.innerHTML = rowContentJP;
-    cel_NOTE.innerHTML = rowContentNOTE;
     cel_DeleteButton.innerHTML = rowDeleteButton;
+}
+
+const DeleteRow = (e) =>{
+   let dataRow = e.target.parentNode;
+   dRow = dataRow.parentNode;
+   table.deleteRow(dRow.sectionRowIndex);
 }
 
 const MakeCSV = () => {
@@ -67,6 +70,7 @@ const MakeCSV = () => {
 return window.alert("You get it")
 }
 
+// ローカルサーバーとの連携
 const mongoGet = async () =>{
     try {
         console.log("show");
@@ -76,22 +80,20 @@ const mongoGet = async () =>{
          let { data } = allbks;
         //出力
          allbks = data.map((wordDetail) => {
-            let english = wordDetail['english'];
-            let japanese = wordDetail['japanese'];
-            let note = wordDetail['note']
+            let english = wordDetail['English'];
+            let japanese = wordDetail['Japanese'];
+            
             let newRow = table.insertRow(-1);
             let cel_EN = newRow.insertCell(-1);
             let cel_JP = newRow.insertCell(-1);
-            let cel_NOTE = newRow.insertCell(-1);
             let cel_Dlt = newRow.insertCell(-1);
             let rowContentEN = `${english}`;
             let rowContentJP = `${japanese}`;
-            let rowContentNOTE = `${note}`;
+            
             let rowContentDelete = '<input type="button" value="X"/>'
             console.log(english)
             cel_EN.innerHTML = rowContentEN;
             cel_JP.innerHTML = rowContentJP;
-            cel_NOTE.innerHTML = rowContentNOTE;
             cel_Dlt.innerHTML = rowContentDelete;
             return console.log(english);
           });

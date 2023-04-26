@@ -58,6 +58,7 @@ div.opt_2>h4{
 div.opt_2{
     display: flex;
     margin-top: 50px;
+    margin-bottom: 50px;
     justify-content: center;  
 }
 
