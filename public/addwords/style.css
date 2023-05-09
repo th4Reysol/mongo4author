@@ -29,16 +29,6 @@ div.opt_1{
     text-align: center;
     margin-top: 25px;
     padding: 12px;
-    justify-content: space-evenly;
-}
-
-div.opt_1>a{
-    border:solid black;
-    text-decoration: none;
-    background-color: lightgreen;
-    padding: 2px;
-    font-size: 12pt;
-    border-radius:20px;
 }
 
 div.opt_1>input{
@@ -56,25 +46,7 @@ div.opt_1>input:hover{
     cursor: pointer;
 }
 
-div.opt_2, h4{
-    text-align: center;
-}
 
-div.opt_2>h4{
-    margin: 8px;
-    text-decoration: underline
-}
-
-div.opt_2{
-    display: flex;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    justify-content: center;  
-}
-
-div.opt_2>input{
-    margin-left: 30px;
-}
 
 
 

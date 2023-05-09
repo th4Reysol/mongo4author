@@ -16,20 +16,20 @@
               <th scope="col">Japanese</th>
             </tr>
             <tr>
-                <td><input type="text" name="English"/>
+                <td ><input type="text" name="English"/>
                 </td>
                 <td><input type="text" name="Japanese"/>
                 </td>
-                <td><input type="button" value="X" onclick="DeleteRow"/>
+                <td><input class="closeBtn" type="button" value="X" onclick="DelRow(event)"/>
                 </td>
             </tr>
         </table>
       </div>
       <div class="opt_1">
         <input type="button" value="Add a Row" onclick="AddRow()"/>
-        <input type="button" value="Save Them" onclick=""/>
+        <input type="button" value="Save Them" onclick="SaveToDB()"/>
       </div>
-    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

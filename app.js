@@ -24,9 +24,6 @@ function registerData(){
     })
     bkData.save()
 }
-function add_NewWords(){
-  console.log("DID IT!")
-}
 
 // ローカルホストに/book追加で入力すると作動する。
 app.get("/word", async (req,res) => {
@@ -41,10 +38,30 @@ app.get("/word", async (req,res) => {
       }
   });
 
-//データ削除 
-app.delete("/word/delete", async(req, res)=>{
-  const bks = await words.remove({});
-  bks.save();
+//Here 
+app.post("/word/addwords", async(req, res)=>{
+  try {
+    
+    console.log("You success if this message shows on Terminal!")
+    let enWord = req.body.English
+    let jpWord = req.body.Japanese
+    // Here I expect values are added to the DB, but it does not.
+    let added_word = new words({
+      English: enWord,
+      Japanese: jpWord
+    })
+    added_word.save();
+
+    //enWord and jpWord have their values, but added_word only has {id: xxxx}.
+    console.log(enWord);
+    console.log(jpWord);
+    console.log(added_word);
+    
+    
+    
+  } catch (err) {
+    console.log("I cannot register words");
+  }
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

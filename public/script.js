@@ -1,5 +1,8 @@
 // HTMLに対してのJS（サーバーにリクエスト投げます・DBからデータ引っ張ります。）
 let table = document.getElementById("ENJP");
+const closeIcons = document.querySelectorAll('.closeBtn');
+const items = document.querySelectorAll('.item');
+
 const AddRow = () => {
     //テーブルに新行追加
     let newRow = table.insertRow(-1);
@@ -9,17 +12,12 @@ const AddRow = () => {
     let cel_DeleteButton = newRow.insertCell(-1);
     let rowContentEN = '<input type="text" name="English"/>';
     let rowContentJP = '<input type="text" name="Japanese"/>';
-    let rowDeleteButton = '<input type="button" value="X" onclick="DeleteRow()"/>';
+    let rowDeleteButton = '<input class="closeBtn" type="button" value="X"/>';
     cel_EN.innerHTML = rowContentEN;
     cel_JP.innerHTML = rowContentJP;
     cel_DeleteButton.innerHTML = rowDeleteButton;
 }
 
-const DeleteRow = (e) =>{
-   let dataRow = e.target.parentNode;
-   dRow = dataRow.parentNode;
-   table.deleteRow(dRow.sectionRowIndex);
-}
 
 const MakeCSV = () => {
 // 抽出したデータを格納する配列変数
@@ -89,9 +87,7 @@ const mongoGet = async () =>{
             let cel_Dlt = newRow.insertCell(-1);
             let rowContentEN = `${english}`;
             let rowContentJP = `${japanese}`;
-            
             let rowContentDelete = '<input type="button" value="X"/>'
-            console.log(english)
             cel_EN.innerHTML = rowContentEN;
             cel_JP.innerHTML = rowContentJP;
             cel_Dlt.innerHTML = rowContentDelete;
