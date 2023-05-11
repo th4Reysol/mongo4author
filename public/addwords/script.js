@@ -21,7 +21,7 @@ const DelRow = (event) =>{
    event.target.closest('tr').remove();
 }
 
-const SaveToDB = () => {
+const SaveToDB = async() => {
 // An array to have each row's values at the last phase
     let data = [];
     let tbl_tr = table.querySelectorAll('tr');
@@ -46,18 +46,18 @@ const SaveToDB = () => {
             else{
                 d.push("NoData");
             }
-         });
-         data.push(d);
-         
-         let toDB = {English: data[0][0], Japanese: data[0][1]};
-         console.log(toDB);
-
-         axios.post("/word/addwords", 
-         {English: data[0][0], Japanese: data[0][1]}
-         ).then((response)=>{console.log(response)})
-             
+        });
+         data.push(d);                 
         }
     });
+    console.log(data)
+    
+    data.forEach(async(words)=>{
+        console.log(words);
+            
+        await axios.post("/word/addwords", {English: words[0], Japanese: words[1]})
+        .then(()=>{console.log("Success!!")})
+    });   
 }
 
 

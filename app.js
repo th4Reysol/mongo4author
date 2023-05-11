@@ -52,7 +52,6 @@ app.post("/word/addwords", async(req, res)=>{
     })
     added_word.save();
 
-    //enWord and jpWord have their values, but added_word only has {id: xxxx}.
     console.log(enWord);
     console.log(jpWord);
     console.log(added_word);
